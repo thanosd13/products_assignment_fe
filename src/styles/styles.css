@@ -23,3 +23,16 @@
   border: none !important;
   box-shadow: none !important;
 }
+
+.background-layout {
+  background-color: #f2f7fc;
+}
+
+.h-100vh {
+  height: 100vh;
+}
+
+.span-account:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

@@ -1,14 +1,22 @@
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { Footer } from './components/footer/Footer';
 import { Header } from './components/header/Header';
-import { UserPage } from './pages/userPage/UserPage';
+import routes from './routes/routes';
 import './styles/styles.css';
 
 function App() {
+  const location = useLocation();
+  const currentRoute =
+    routes.find(route => route.path === location.pathname) || {};
   return (
     <div>
-      <Header />
-      <UserPage />
-      <Footer />
+      {currentRoute.showHeaderAndFooter && <Header />}
+      <Routes>
+        {routes.map((route, index) => (
+          <Route key={index} path={route.path} element={route.element} />
+        ))}
+      </Routes>
+      {currentRoute.showHeaderAndFooter && <Footer />}
     </div>
   );
 }
