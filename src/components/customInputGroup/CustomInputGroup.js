@@ -6,7 +6,7 @@ export const CustomInputGroup = ({
   icon,
   placeholder,
   name,
-  handleInputChange,
+  onChange,
   type = 'text',
 }) => {
   return (
@@ -18,7 +18,7 @@ export const CustomInputGroup = ({
         name={name}
         type={type}
         placeholder={placeholder}
-        onChange={handleInputChange}
+        onChange={onChange}
       />
     </InputGroup>
   );
