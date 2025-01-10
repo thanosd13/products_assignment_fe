@@ -2,7 +2,7 @@
   border: 5px solid black;
   box-shadow: #027bbc 0 0 20px 7px;
   min-width: 80%;
-  height: 500px;
+  height: 600px;
   margin: 100px;
   display: flex;
   justify-content: space-between;
@@ -66,17 +66,17 @@
   background-color: rgb(49, 49, 255);
   border: 3px solid rgb(0, 4, 106);
 }
-.register .forms {
+.forms {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 40px;
 }
-.login .forms {
+.forms {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 80px;
+  margin-top: 30px;
 }
 input[type='text'],
 input[type='email'],

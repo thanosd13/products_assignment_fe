@@ -12,7 +12,7 @@ export const UserPage = () => {
     { value: 1, label: 'category 2' },
   ];
   return (
-    <div className='p-4'>
+    <div className='p-5 mt-5'>
       <CardContainer width='100%' height='20vh'>
         <Row className='w-100'>
           <Col sm={4}>

@@ -2,6 +2,7 @@ import { AdsPage } from '../pages/adsPage/AdsPage';
 import { HomePage } from '../pages/homePage/HomePage';
 import { LoginPage } from '../pages/loginPage/LoginPage';
 import { LogReg } from '../pages/logRegPage/LogRegPage';
+import { ProducerPage } from '../pages/producerPage/ProducerPage';
 import { RegisterPage } from '../pages/registerPage/RegisterPage';
 import { UserPage } from '../pages/userPage/UserPage';
 
@@ -19,6 +20,11 @@ const routes = [
   {
     path: '/user',
     element: <UserPage />,
+    showHeaderAndFooter: true,
+  },
+  {
+    path: '/producer',
+    element: <ProducerPage />,
     showHeaderAndFooter: true,
   },
   {
