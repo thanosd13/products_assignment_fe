@@ -1,0 +1,112 @@
+.footerlinks a.active {
+  border-bottom: 3px solid #ff9913;
+  opacity: 1;
+}
+
+.icons {
+  font-size: 25px;
+  width: auto;
+  height: auto;
+  display: flex;
+}
+
+.icons i {
+  margin: 5px;
+  background-color: #f69c3c;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  width: 30px;
+  justify-content: center;
+  text-align: center;
+}
+
+footer {
+  max-height: 250px;
+  width: 100%;
+  position: absolute;
+  bottom: 5; /* me 0 den kratage apostasi ap to (pio panw stoixeio) content */
+  display: flex;
+  flex-direction: column;
+}
+
+.footer1 {
+  background-color: #035984;
+  height: 15%;
+  padding: 10px;
+  display: inline-flex;
+  justify-content: space-between;
+}
+
+.footericons {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.footericons li {
+  list-style: none;
+  font-size: 15px;
+  margin: 8px;
+}
+
+.footericons li a:hover {
+  background-color: rgb(255, 145, 0);
+}
+
+.footericons li a {
+  color: aliceblue;
+  background-color: #1e283c;
+  padding: 10px;
+  border-radius: 50%;
+  text-decoration: none;
+}
+
+.footer1 p {
+  font-size: 17px;
+  font-weight: 600;
+  color: #ced5ff;
+  margin-top: auto;
+}
+
+.footer2 {
+  background-color: #0f1f41;
+  height: 85%;
+  padding: 10px;
+  color: white;
+}
+
+.footer2 h1 {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 55px;
+}
+
+.footer2 p {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 25px;
+  border-bottom: 5px solid orange;
+}
+
+.footerlinks {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 70px;
+}
+
+.footerlinks li a {
+  color: white;
+  text-decoration: none;
+  margin: 15px;
+  font-size: 25px;
+  opacity: 0.7;
+  padding: 5px;
+}
+
+.footerlinks li a:hover {
+  opacity: 1;
+  border-bottom: 4px solid orange;
+}

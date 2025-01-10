@@ -1,0 +1,88 @@
+.box {
+  border: 5px solid black;
+  box-shadow: #027bbc 0 0 20px 7px;
+  min-width: 80%;
+  height: 500px;
+  margin: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+.boxl {
+  width: 50%;
+  position: relative;
+}
+.boxr {
+  width: 50%;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)),
+    url('../../assets/images/login.jpg');
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  align-items: end;
+  justify-content: space-evenly;
+}
+@media (max-width: 700px) {
+  .box {
+    display: block;
+    margin: 50px;
+  }
+  .boxr {
+    height: 50%;
+    width: 100%;
+  }
+  .boxl {
+    width: 100%;
+    height: 50%;
+  }
+}
+.btn4 {
+  width: 100px;
+  padding: 5px;
+  font-size: 17px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  background-color: rgb(255, 115, 0);
+  border: 3px solid rgb(0, 0, 0);
+  border-radius: 5px;
+}
+.btn4:hover {
+  background-color: rgb(49, 49, 255);
+  border: 3px solid rgb(0, 4, 106);
+}
+.boxl .btn {
+  width: 100px;
+  padding: 5px;
+  font-size: 17px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  background-color: rgb(0, 121, 202);
+  border: 3px solid rgb(0, 0, 0);
+  border-radius: 5px;
+}
+.boxl .btn:hover {
+  background-color: rgb(49, 49, 255);
+  border: 3px solid rgb(0, 4, 106);
+}
+.register .forms {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+.login .forms {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80px;
+}
+input[type='text'],
+input[type='email'],
+input[type='password'] {
+  margin: 10px;
+  padding: 5px;
+  font-weight: 800;
+  color: #002026;
+}

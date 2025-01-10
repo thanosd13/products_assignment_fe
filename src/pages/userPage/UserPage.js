@@ -7,6 +7,10 @@ import { CustomButton } from '../../components/CustomButton/CustomButton';
 import { faMagnifyingGlass, faBroom } from '@fortawesome/free-solid-svg-icons';
 
 export const UserPage = () => {
+  const categories = [
+    { value: 0, label: 'category 1' },
+    { value: 1, label: 'category 2' },
+  ];
   return (
     <div className='p-4'>
       <CardContainer width='100%' height='20vh'>
@@ -15,7 +19,7 @@ export const UserPage = () => {
             <Input label='Προϊόν' placeholder='Επιλέξτε' />
           </Col>
           <Col sm={4}>
-            <Select label='Επιλέξτε κατηγορία' />
+            <Select label='Επιλέξτε κατηγορία' options={categories} />
           </Col>
         </Row>
         <Row>
