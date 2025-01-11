@@ -1,10 +1,12 @@
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
-import test_image from '../../assets/images/test_images/test_image.jpg';
-export const ProductCard = () => {
+export const ProductCard = ({ product }) => {
   return (
     <Card style={{ width: '20rem' }}>
-      <Card.Img variant='top' src={test_image} />
+      <Card.Img
+        variant='top'
+        src={`data:image/jpeg;base64,${product?.image}`}
+      />
       <Card.Body>
         <Card.Title>Product Title</Card.Title>
         <Card.Text>Product Description!!!!</Card.Text>
