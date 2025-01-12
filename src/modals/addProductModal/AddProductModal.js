@@ -173,6 +173,15 @@ export const AddProductModal = ({
           </Col>
           <Col xs={6} sm={6} md={6} lg={6} xl={6}>
             <Input
+              label='Τιμή'
+              value={formData.price}
+              type='number'
+              name='price'
+              onChange={onChange}
+            />
+          </Col>
+          <Col xs={6} sm={6} md={6} lg={6} xl={6}>
+            <Input
               label='Φωτογραφία'
               type='file'
               name='image'

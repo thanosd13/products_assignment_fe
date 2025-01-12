@@ -36,3 +36,9 @@
   text-decoration: underline;
   cursor: pointer;
 }
+
+.card-img,
+.card-img-bottom,
+.card-img-top {
+  height: 25vh !important;
+}
