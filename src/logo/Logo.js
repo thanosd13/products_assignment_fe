@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../assets/images/generic_logo.png';
+import logo from '../assets/images/logoads.jpg';
 
 export const Logo = ({ style, height = '160px', width = '160px' }) => {
   return (

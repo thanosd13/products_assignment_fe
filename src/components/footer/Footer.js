@@ -8,8 +8,10 @@ import {
   faFacebook,
   faTwitter,
 } from '@fortawesome/free-brands-svg-icons';
+import { useAuth } from '../../contexts/AuthContext';
 
 export const Footer = () => {
+  const { authState } = useAuth();
   return (
     <footer>
       <div className={classes.footer1}>
@@ -52,17 +54,27 @@ export const Footer = () => {
         </div>
         <ul className={classes.footerlinks}>
           <li>
-            <NavLink to='/'>Αρχική</NavLink>
+            <NavLink to='/home'>Αρχική</NavLink>
           </li>
-          <li>
-            <NavLink to='Search1'>Αναζήτηση</NavLink>
-          </li>
-          <li>
-            <NavLink to='LogReg'>Εγγραφή/Σύνδεση</NavLink>
-          </li>
-          <li>
-            <NavLink to='Upload'>Καταχώρηση</NavLink>
-          </li>
+          {!authState ? (
+            <li>
+              <NavLink to='/logReg'>Εγγραφή/Σύνδεση</NavLink>
+            </li>
+          ) : authState?.role === 'user' ? (
+            <li>
+              <NavLink to='/user'>Προϊόντα</NavLink>
+            </li>
+          ) : authState?.role === 'producer' ? (
+            <li>
+              <NavLink to='/producer'>Τα προϊόντα μου</NavLink>
+            </li>
+          ) : authState?.role === 'admin' ? (
+            <li>
+              <NavLink to='/admin'>Χρήστες</NavLink>
+            </li>
+          ) : (
+            ''
+          )}
           <li>
             <NavLink to='Adsfp1'>AdsFP</NavLink>
           </li>

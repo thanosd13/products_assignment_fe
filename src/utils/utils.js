@@ -69,6 +69,88 @@ export const genericProductOptions = [
   { value: 'kriti', label: 'Κρήτη', type: 'location' },
 ];
 
+// categories options
+export const categoryOptions = [
+  { value: 'frouta', label: 'Φρούτα' },
+  { value: 'lachanika', label: 'Λαχανικά' },
+  { value: 'kreata', label: 'Κρέατα' },
+  { value: 'galaktokomika', label: 'Γαλακτοκομικά' },
+];
+
+// product options
+export const productOptions = [
+  { value: 'kerasi', label: 'Κεράσι' },
+  { value: 'lemoni', label: 'Λεμόνι' },
+  { value: 'milo', label: 'Μήλο' },
+  { value: 'rodakino', label: 'Ροδάκινο' },
+  { value: 'mpanana', label: 'Μπανάνα' },
+  { value: 'achladi', label: 'Αχλάδι' },
+  { value: 'aktinidio', label: 'Ακτινίδιο' },
+  { value: 'vanilia', label: 'Βανίλια' },
+  { value: 'portokali', label: 'Πορτοκάλι' },
+  { value: 'stafyli', label: 'Σταφύλι' },
+  { value: 'karoto', label: 'Καρότο' },
+  { value: 'spanaki', label: 'Σπανάκι' },
+  { value: 'ntomata', label: 'Ντομάτα' },
+  { value: 'kremmydi', label: 'Κρεμμύδι' },
+  { value: 'lachano', label: 'Λάχανο' },
+  { value: 'piperia', label: 'Πιπεριά' },
+  { value: 'marouli', label: 'Μαρούλι' },
+  { value: 'melitzana', label: 'Μελιτζάνα' },
+  { value: 'kounoupidi', label: 'Κουνουπίδι' },
+  { value: 'patates', label: 'Πατάτες' },
+  { value: 'moschari', label: 'Μοσχάρι' },
+  { value: 'arni', label: 'Αρνί' },
+  { value: 'katsiki', label: 'Κατσίκι' },
+  { value: 'choirino', label: 'Χοιρινό' },
+  { value: 'kotopoulo', label: 'Κοτόπουλο' },
+  { value: 'voutiro', label: 'Βούτυρο' },
+  { value: 'tyri', label: 'Τυρί' },
+  { value: 'giaourti', label: 'Γιαούρτι' },
+  { value: 'gala', label: 'Γάλα' },
+];
+
+// quality options
+export const qualityOptions = [
+  { value: 'viologika', label: 'Βιολογικά' },
+  { value: 'nonviologika', label: 'Μη Βιολογικά' },
+  { value: 'viologika_miviologika', label: 'Βιολογικά/Μη Βιολογικά' },
+];
+
+// origin options
+export const originOptions = [
+  { value: 'egxwria', label: 'Εγχώρια' },
+  { value: 'ekswterikou', label: 'Εξωτερικού' },
+  { value: 'egxwria_ekswterikou', label: 'Εγχώρια/Εξωτερικού' },
+];
+
+// packing options
+export const packingOptions = [
+  { value: 'syskevasmena', label: 'Συσκευασμένα' },
+  { value: 'xyma', label: 'Χύμα' },
+  { value: 'syskevasmena_xyma', label: 'Συσκευασμένα/Χύμα' },
+];
+
+// location options
+export const locationOptions = [
+  {
+    value: 'anatoliki_makedonia_kai_thraki',
+    label: 'Ανατολική Μακεδονία και Θράκη',
+  },
+  { value: 'kentriki_makedonia', label: 'Κεντρική Μακεδονία' },
+  { value: 'dytiki_makedonia', label: 'Δυτική Μακεδονία' },
+  { value: 'hpeiros', label: 'Ήπειρος' },
+  { value: 'thessalia', label: 'Θεσσαλία' },
+  { value: 'sterea_ellada', label: 'Στερεά Ελλάδα' },
+  { value: 'ionies_nhsoi', label: 'Ιόνιες Νήσοι' },
+  { value: 'dytiki_ellada', label: 'Δυτική Ελλάδα' },
+  { value: 'peloponnisos', label: 'Πελοπόννησος' },
+  { value: 'attiki', label: 'Αττική' },
+  { value: 'voreio_aigaio', label: 'Βόρειο Αιγαίο' },
+  { value: 'notio_aigaio', label: 'Νότιο Αιγαίο' },
+  { value: 'kriti', label: 'Κρήτη' },
+];
+
 // get label from value
 export const getLabel = value => {
   const option = genericProductOptions.find(option => option.value === value);

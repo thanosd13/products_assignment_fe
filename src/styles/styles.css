@@ -42,3 +42,35 @@
 .card-img-top {
   height: 25vh !important;
 }
+
+.comments {
+  text-decoration: underline;
+}
+
+.comments:hover {
+  cursor: pointer;
+  color: var(--light-blue);
+}
+
+.font-family-comm {
+  font-family: monospace;
+}
+
+.username {
+  text-decoration: underline;
+}
+
+.username:hover {
+  cursor: pointer;
+  color: var(--light-blue);
+}
+
+.heart:hover {
+  cursor: pointer;
+  color: var(--red);
+}
+
+.active-heart {
+  cursor: pointer;
+  color: var(--red);
+}

@@ -163,6 +163,8 @@ export const LogReg = () => {
           navigate('/producer');
         } else if (response.data.role === 'user') {
           navigate('/user');
+        } else if (response.data.role === 'admin') {
+          navigate('/admin');
         }
       })
       .catch(error => {

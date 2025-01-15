@@ -2,58 +2,25 @@ import React, { useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { ProductCard } from '../../components/productCard/ProductCard';
 import { CustomButton } from '../../components/CustomButton/CustomButton';
-import { AddProductModal } from '../../modals/addProductModal/AddProductModal';
 import {
-  addProductService,
   deleteProductService,
-  getProductsService,
+  getProductsPerUserService,
 } from '../../services/productService';
 import { useLoader } from '../../contexts/LoaderContext';
 import { useToast } from '../../contexts/ToastContext';
 import { ConfirmationModal } from '../../modals/confirmationModal/ConfirmationModal';
+import { useParams } from 'react-router-dom';
 
-export const ProducerPage = () => {
-  const initialState = {
-    category: '',
-    product: '',
-    quality: '',
-    origin: '',
-    packing: '',
-    location: '',
-    price: '',
-    image: '',
-  };
-  const [showAddProductModal, setShowAddProductModal] = useState(false);
+export const ProductsPerUserPage = () => {
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
-  const [formData, setFormData] = useState(initialState);
   const [refreshFlag, setRefreshFlag] = useState(false);
   const [products, setProducts] = useState([]);
   const [deleteId, setDeleteId] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 3; // Number of items per page
+  const itemsPerPage = 4; // Number of items per page
   const { showLoader, hideLoader } = useLoader();
   const { showSuccess, showError } = useToast();
-
-  const handleOpenProductModal = () => {
-    setFormData(initialState);
-    setShowAddProductModal(true);
-  };
-  const handleCloseProductModal = () => setShowAddProductModal(false);
-
-  const handleFieldChange = event => {
-    const { name, value, files } = event.target;
-    if (files) {
-      setFormData(prevFormData => ({
-        ...prevFormData,
-        [name]: files[0], // Store the file object
-      }));
-    } else {
-      setFormData(prevFormData => ({
-        ...prevFormData,
-        [name]: value,
-      }));
-    }
-  };
+  const { userId } = useParams();
 
   const totalPages = Math.ceil(products.length / itemsPerPage);
   const currentProducts = products.slice(
@@ -85,29 +52,6 @@ export const ProducerPage = () => {
     }
     return buttons;
   };
-
-  const addProduct = () => {
-    showLoader();
-    const data = new FormData();
-    for (const key in formData) {
-      data.append(key, formData[key]);
-    }
-
-    addProductService(data)
-      .then(response => {
-        showSuccess();
-        setRefreshFlag(prevFlag => !prevFlag);
-        handleCloseProductModal();
-        hideLoader();
-      })
-      .catch(error => {
-        showError();
-        console.log(error);
-        handleCloseProductModal();
-        hideLoader();
-      });
-  };
-
   const handleOpenConfirmationModal = id => {
     setDeleteId(id);
     setShowConfirmationModal(true);
@@ -137,7 +81,7 @@ export const ProducerPage = () => {
     }
 
     showLoader();
-    getProductsService()
+    getProductsPerUserService(userId)
       .then(response => {
         setProducts(response.data);
         hideLoader();
@@ -156,17 +100,8 @@ export const ProducerPage = () => {
       <Row className='p-3'>
         <Col sm={3}>
           <h3 style={{ textAlign: 'left' }}>
-            Τα προϊόντα μου ({products?.length > 0 ? products?.length : 0})
+            Προϊόντα ({products?.length > 0 ? products?.length : 0})
           </h3>
-        </Col>
-        <Col sm={3}></Col>
-        <Col sm={3}></Col>
-        <Col sm={3} className='d-flex justify-content-end'>
-          <CustomButton
-            label='Προσθήκη'
-            variant='success'
-            onClick={handleOpenProductModal}
-          />
         </Col>
       </Row>
       {currentProducts?.length > 0 && (
@@ -186,13 +121,6 @@ export const ProducerPage = () => {
           {renderPaginationButtons()}
         </Col>
       </Row>
-      <AddProductModal
-        show={showAddProductModal}
-        handleClose={handleCloseProductModal}
-        formData={formData}
-        onChange={handleFieldChange}
-        addProduct={addProduct}
-      />
       <ConfirmationModal
         id={deleteId}
         show={showConfirmationModal}
