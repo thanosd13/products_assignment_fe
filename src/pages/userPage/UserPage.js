@@ -50,8 +50,13 @@ export const UserPage = () => {
     setCurrentPage(pageNumber);
     const url = new URL(window.location);
     url.searchParams.set('page', pageNumber);
+    Object.keys(searchFilters).forEach(key => {
+      if (searchFilters[key]) {
+        url.searchParams.set(key, searchFilters[key]);
+      }
+    });
     window.history.pushState({}, '', url);
-    window.location.reload();
+    fetchProducts(pageNumber, searchFilters);
   };
 
   const renderPaginationButtons = () => {
@@ -80,36 +85,33 @@ export const UserPage = () => {
   };
 
   const searchProducts = () => {
-    showLoader();
-    getProductsWithFiltersService(searchFilters)
-      .then(response => {
-        setProducts(response.data);
-        if (response.data.length < 1) {
-          setFoundProducts(false);
-        } else {
-          setFoundProducts(true);
-        }
-        hideLoader();
-      })
-      .catch(error => {
-        console.log(error);
-        hideLoader();
-      });
+    setCurrentPage(1);
+    const url = new URL(window.location);
+    url.searchParams.set('page', 1);
+    Object.keys(searchFilters).forEach(key => {
+      if (searchFilters[key]) {
+        url.searchParams.set(key, searchFilters[key]);
+      }
+    });
+    window.history.pushState({}, '', url);
+    fetchProducts(1, searchFilters);
   };
 
   const cleanFilters = () => {
     setSearchFilters(initialState);
+    setCurrentPage(1);
+    const url = new URL(window.location);
+    url.searchParams.delete('page');
+    Object.keys(initialState).forEach(key => {
+      url.searchParams.delete(key);
+    });
+    window.history.pushState({}, '', url);
+    fetchProducts(1, initialState);
   };
 
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const page = parseInt(urlParams.get('page'), 10);
-    if (page) {
-      setCurrentPage(page);
-    }
-
+  const fetchProducts = (page, filters) => {
     showLoader();
-    getAllProductsService()
+    getProductsWithFiltersService(filters)
       .then(response => {
         setProducts(response.data);
         if (response.data.length < 1) {
@@ -123,6 +125,21 @@ export const UserPage = () => {
         console.log(error);
         hideLoader();
       });
+  };
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const page = parseInt(urlParams.get('page'), 10) || 1;
+    const filters = { ...initialState };
+    Object.keys(initialState).forEach(key => {
+      const value = urlParams.get(key);
+      if (value) {
+        filters[key] = value;
+      }
+    });
+    setSearchFilters(filters);
+    setCurrentPage(page);
+    fetchProducts(page, filters);
   }, []);
 
   return (
