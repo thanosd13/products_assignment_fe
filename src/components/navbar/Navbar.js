@@ -62,6 +62,11 @@ export const Navbar = () => {
         ) : (
           ''
         )}
+        {!authState && (
+          <li>
+            <NavLink to='/user'>Προϊόντα</NavLink>
+          </li>
+        )}
         <li>
           <NavLink to='/ads'>AdsFP</NavLink>
         </li>

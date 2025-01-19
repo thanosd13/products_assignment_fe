@@ -22,7 +22,7 @@ export const ProductCard = ({ product, openModal, renderPageFunc }) => {
     comments: '',
     stars: null,
   });
-  const { authState } = useAuth();
+  const { authToken, authState } = useAuth();
   const { showLoader, hideLoader } = useLoader();
   const { showSuccess, showError } = useToast();
   const navigate = useNavigate();
@@ -160,12 +160,14 @@ export const ProductCard = ({ product, openModal, renderPageFunc }) => {
                 />
               </span>
             )}
-            <span
-              onClick={() => toggleFavoriteProduct(product?._id)}
-              className={isFavorite ? 'active-heart' : 'heart'}
-            >
-              <FontAwesomeIcon icon={faHeart} />
-            </span>
+            {authToken && (
+              <span
+                onClick={() => toggleFavoriteProduct(product?._id)}
+                className={isFavorite ? 'active-heart' : 'heart'}
+              >
+                <FontAwesomeIcon icon={faHeart} />
+              </span>
+            )}
             <span>
               ({product?.favorites?.length > 0 ? product?.favorites?.length : 0}
               )

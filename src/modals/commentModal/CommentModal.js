@@ -4,6 +4,7 @@ import { CustomButton } from '../../components/CustomButton/CustomButton';
 import Form from 'react-bootstrap/Form';
 import ReactStars from 'react-rating-stars-component';
 import { GRAY } from '../../constants/ColorsTypes';
+import { useAuth } from '../../contexts/AuthContext';
 
 export const CommentModal = ({
   show,
@@ -16,6 +17,7 @@ export const CommentModal = ({
   handleClose,
   onCallback,
 }) => {
+  const { authToken } = useAuth();
   return (
     <Modal show={show} onHide={handleClose} backdrop='static' keyboard={false}>
       <Modal.Header closeButton>
@@ -69,11 +71,13 @@ export const CommentModal = ({
         ))}
       </Modal.Body>
       <Modal.Footer>
-        <CustomButton
-          label='Προσθήκη'
-          variant='success'
-          onClick={() => onCallback(id)}
-        />
+        {authToken && role !== 'producer' && (
+          <CustomButton
+            label='Προσθήκη'
+            variant='success'
+            onClick={() => onCallback(id)}
+          />
+        )}
         <CustomButton label='Κλείσιμο' variant='danger' onClick={handleClose} />
       </Modal.Footer>
     </Modal>
